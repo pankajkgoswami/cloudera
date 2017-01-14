@@ -1,0 +1,12 @@
+ADD JAR /root/data/zodiac.jar;
+
+CREATE TEMPORARY FUNCTION zodiac AS 'UDF.UDFZodiacSign';
+
+
+hive> create table if not exists emp(name String,company string,bday string)
+    > row format delimited fields terminated by ',';
+
+
+LOAD DATA LOCAL INPATH '/root/data/empdata.csv' INTO TABLE emp;
+
+hive> select name,company,bday,zodiac(bday) from emp;

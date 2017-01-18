@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Hbase</name>
+	<name>HiveUDF</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>conf</name>
-			<type>2</type>
-			<location>/usr/local/hbase/conf</location>
-		</link>
-	</linkedResources>
 </projectDescription>

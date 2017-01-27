@@ -17,6 +17,7 @@ public class ScanOperation {
 		Configuration conf = HBaseConfiguration.create();
 		HTable table = new HTable(conf, "testtable");
 		Scan scan1 = new Scan();
+		scan1.setMaxVersions(3);
 		ResultScanner scanner1 = table.getScanner(scan1);
 		for (Result res : scanner1) {
 		System.out.println(res);
@@ -25,7 +26,8 @@ public class ScanOperation {
 		System.out.println("***************************************************************");
 		
 		Scan scan2 = new Scan();
-		scan2.addFamily(Bytes.toBytes("colfam1"));
+		
+		scan2.addFamily(Bytes.toBytes("cf1"));
 		ResultScanner scanner2 = table.getScanner(scan2);
 		for (Result res : scanner2) {
 			System.out.println(res);
@@ -34,8 +36,8 @@ public class ScanOperation {
 		System.out.println("***************************************************************");
 		
 		Scan scan3 = new Scan();
-		scan3.addColumn(Bytes.toBytes("colfam1"), Bytes.toBytes("val04")).
-		addColumn(Bytes.toBytes("colfam2"), Bytes.toBytes("value-10")).
+		scan3.addColumn(Bytes.toBytes("cf1"), Bytes.toBytes("value-3")).
+		addColumn(Bytes.toBytes("cf1"), Bytes.toBytes("value-3")).
 		setStartRow(Bytes.toBytes("row1")).
 		setStopRow(Bytes.toBytes("row2"));
 		ResultScanner scanner3 = table.getScanner(scan3);
